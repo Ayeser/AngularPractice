@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<p>Try to change the names.</p>
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="myCol='lightblue'" test-directive>
+
+First Name: <input type="text" style="background-color:{{myCol}}" ng-model="firstName"><br>
+Last Name: <input type="text" style="background-color:{{myCol}}" ng-model="lastName"><br>
+<br>
+Full Name: {{firstName + " " + lastName}}
+
+<!-- Or can use line below -->
+<!-- <p>Full name: <span ng-bind="firstName + ' ' + lastName"></span></p> -->
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+});
+
+app.directive("test-directive", function() {
+    return {
+        template : "It is important to know your name!"
+    }
+})
+</script>
+
+</body>
+</html>
